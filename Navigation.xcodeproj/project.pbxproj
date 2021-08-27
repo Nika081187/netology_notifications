@@ -54,6 +54,8 @@
 		28810A7225864FBB00F9E84E /* ProfilePhotoStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28810A7125864FBB00F9E84E /* ProfilePhotoStackView.swift */; };
 		28810A752586510200F9E84E /* PhotoStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28810A742586510200F9E84E /* PhotoStorage.swift */; };
 		28810A782586708800F9E84E /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28810A772586708800F9E84E /* PhotosViewController.swift */; };
+		2886D4C926D95EE000E66C20 /* LocalNotificationsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2886D4C826D95EE000E66C20 /* LocalNotificationsService.swift */; };
+		2886D4CA26D95EE000E66C20 /* LocalNotificationsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2886D4C826D95EE000E66C20 /* LocalNotificationsService.swift */; };
 		288D6C38257292FF0039E5EF /* TopHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288D6C37257292FF0039E5EF /* TopHeaderView.swift */; };
 		288D6C3B257299720039E5EF /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288D6C3A257299720039E5EF /* LogInViewController.swift */; };
 		28CAD534257B77BC005F72DE /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CAD533257B77BC005F72DE /* Post.swift */; };
@@ -88,6 +90,8 @@
 		28810A7125864FBB00F9E84E /* ProfilePhotoStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePhotoStackView.swift; sourceTree = "<group>"; };
 		28810A742586510200F9E84E /* PhotoStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoStorage.swift; sourceTree = "<group>"; };
 		28810A772586708800F9E84E /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
+		2886D4C826D95EE000E66C20 /* LocalNotificationsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationsService.swift; sourceTree = "<group>"; };
+		2886D4CD26D9608000E66C20 /* Navigation.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Navigation.entitlements; sourceTree = "<group>"; };
 		288D6C37257292FF0039E5EF /* TopHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopHeaderView.swift; sourceTree = "<group>"; };
 		288D6C3A257299720039E5EF /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		28CAD533257B77BC005F72DE /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
@@ -137,6 +141,7 @@
 		060782B0250CE27700A87020 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				2886D4CD26D9608000E66C20 /* Navigation.entitlements */,
 				060782B1250CE27700A87020 /* AppDelegate.swift */,
 				060782B5250CE27700A87020 /* FeedViewController.swift */,
 				280B8E6E25D8378900A798FD /* FeedCoordinator.swift */,
@@ -166,6 +171,7 @@
 				280B8E5A25D801F200A798FD /* ProfileCoordinator.swift */,
 				280B8E6425D805DC00A798FD /* LoginCoordinator.swift */,
 				281F130E258A15940035822E /* PhotosCollectionViewCell.swift */,
+				2886D4C826D95EE000E66C20 /* LocalNotificationsService.swift */,
 				288D6C3A257299720039E5EF /* LogInViewController.swift */,
 				280B8E8125D8421B00A798FD /* PhotosCoordinator.swift */,
 				28CAD533257B77BC005F72DE /* Post.swift */,
@@ -279,6 +285,7 @@
 				28CAD538257B7AB1005F72DE /* ProfileTableHederView.swift in Sources */,
 				280B8E7925D83B2300A798FD /* InfoCoordinator.swift in Sources */,
 				28CAD534257B77BC005F72DE /* Post.swift in Sources */,
+				2886D4C926D95EE000E66C20 /* LocalNotificationsService.swift in Sources */,
 				280B8E5625D8015F00A798FD /* Coordinator.swift in Sources */,
 				280B8E6A25D81D4800A798FD /* MainCoordinator.swift in Sources */,
 				280594F625ACD16A00F5100A /* MyTabBarController.swift in Sources */,
@@ -311,6 +318,7 @@
 				284AE2F325B0C49E00027E09 /* ProfileTableHederView.swift in Sources */,
 				280B8E7A25D83B2300A798FD /* InfoCoordinator.swift in Sources */,
 				284AE2F425B0C49E00027E09 /* Post.swift in Sources */,
+				2886D4CA26D95EE000E66C20 /* LocalNotificationsService.swift in Sources */,
 				280B8E5725D8015F00A798FD /* Coordinator.swift in Sources */,
 				280B8E6B25D81D4800A798FD /* MainCoordinator.swift in Sources */,
 				284AE2F525B0C49E00027E09 /* MyTabBarController.swift in Sources */,
@@ -465,6 +473,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Navigation/Navigation.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JF4422S8BN;
 				INFOPLIST_FILE = Navigation/Info.plist;
@@ -483,6 +492,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Navigation/Navigation.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JF4422S8BN;
 				INFOPLIST_FILE = Navigation/Info.plist;
