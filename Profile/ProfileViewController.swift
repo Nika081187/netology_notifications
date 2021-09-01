@@ -14,16 +14,14 @@ protocol ProfileViewDelegate: class {
 }
 
 @available(iOS 13.0, *)
-class ProfileViewController: UIViewController, UNUserNotificationCenterDelegate {
+class ProfileViewController: UIViewController {
     
-    let screenRect = UIScreen.main.bounds
-    lazy var screenWidth = screenRect.size.width
-    lazy var screenHeight = screenRect.size.height
-    var showNotificationSettingsUI: Bool = false
-    
-    let userNotificationCenter = UNUserNotificationCenter.current()
-    
-    var tapped = false
+    private let screenRect = UIScreen.main.bounds
+    private lazy var screenWidth = screenRect.size.width
+    private lazy var screenHeight = screenRect.size.height
+    private var showNotificationSettingsUI: Bool = false
+    private let userNotificationCenter = UNUserNotificationCenter.current()
+    private var tapped = false
     private let table = UITableView(frame: .zero, style: .grouped)
     
     private var reuseId: String {
@@ -44,11 +42,6 @@ class ProfileViewController: UIViewController, UNUserNotificationCenterDelegate 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.userNotificationCenter.delegate = self
-        LocalNotificationsService().requestNotificationAuthorization()
-        LocalNotificationsService().sendNotification()
-        LocalNotificationsService().registerForLatestUpdatesIfPossible()
         
         table.toAutoLayout()
         
