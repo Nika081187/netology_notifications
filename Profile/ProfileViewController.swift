@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 protocol ProfileViewDelegate: class {
     func onArrowPressed()
@@ -15,11 +16,12 @@ protocol ProfileViewDelegate: class {
 @available(iOS 13.0, *)
 class ProfileViewController: UIViewController {
     
-    let screenRect = UIScreen.main.bounds
-    lazy var screenWidth = screenRect.size.width
-    lazy var screenHeight = screenRect.size.height
-    
-    var tapped = false
+    private let screenRect = UIScreen.main.bounds
+    private lazy var screenWidth = screenRect.size.width
+    private lazy var screenHeight = screenRect.size.height
+    private var showNotificationSettingsUI: Bool = false
+    private let userNotificationCenter = UNUserNotificationCenter.current()
+    private var tapped = false
     private let table = UITableView(frame: .zero, style: .grouped)
     
     private var reuseId: String {
@@ -38,40 +40,11 @@ class ProfileViewController: UIViewController {
         super.init(coder: coder)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        print(type(of: self), #function)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        print(type(of: self), #function)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        print(type(of: self), #function)
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        print(type(of: self), #function)
-    }
-    
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        print(type(of: self), #function)
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        print(type(of: self), #function)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         table.toAutoLayout()
+        
         table.rowHeight = UITableView.automaticDimension
         table.estimatedRowHeight = 250
         table.allowsSelection = false
@@ -101,6 +74,14 @@ class ProfileViewController: UIViewController {
         let tapGestureRecognizer = UITapGestureRecognizer.init(target: self, action: #selector(tapAvatar))
         header.avatarImage.addGestureRecognizer(tapGestureRecognizer)
         header.avatarImage.isUserInteractionEnabled = true
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        completionHandler()
+    }
+
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.alert, .badge, .sound])
     }
     
     @objc func tapAvatar() {

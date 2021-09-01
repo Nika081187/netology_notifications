@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 @available(iOS 13.0, *)
 @UIApplicationMain
@@ -14,9 +15,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     private var mainCoordinator: MainCoordinator?
+    private let localNotificationsService = LocalNotificationsService()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         let window = UIWindow(frame: UIScreen.main.bounds)
+        
         let mainCoordinator = MainCoordinator(window: window)
         self.window = window
         self.mainCoordinator = mainCoordinator
@@ -25,6 +28,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.shared.setMinimumBackgroundFetchInterval(
           UIApplication.backgroundFetchIntervalMinimum)
         
+        UNUserNotificationCenter.current().delegate = localNotificationsService
+        
+        localNotificationsService.sendNotification()
+        localNotificationsService.registerForLatestUpdatesIfPossible()
+
         return true
     }
     
@@ -43,5 +51,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-}
 
+    private func application(_ application: UIApplication, didReceive notification: UNNotificationRequest) {
+        UIApplication.shared.applicationIconBadgeNumber = 0
+    }
+}
